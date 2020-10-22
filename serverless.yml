@@ -1,0 +1,60 @@
+
+service: mypi
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-offline
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+       - http:
+           path: hello
+           method: GET
+  readallasync:
+    handler: readallasync.all
+    events:
+       - http:
+           path: read
+           method: GET
+           cors: true
+  addentryasync:
+    handler: addentry.add
+    events:
+       - http:
+           path: add
+           method: POST
+           cors: true
+  readbyid:
+    handler: readbyid.id
+    events:
+       - http:
+           path: readbyid/{id}
+           method: GET
+           cors: true  
+  updatebyid:
+    handler: update.id
+    events:
+       - http:
+           path: updatebyid/{id}
+           method: POST
+           cors: true
+  deletebyid:
+    handler: delete.id
+    events:
+       - http:
+           path: deletebyid/{id}
+           method: GET
+           cors: true
+
+
+
+
+ 
