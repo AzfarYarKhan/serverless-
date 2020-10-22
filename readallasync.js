@@ -8,7 +8,7 @@ async function formconnection() {
     var app = express();
     app.use(express.json());
     const PORT = process.env.PORT || 3000;
-    const connection = new Sequelize('mydb1', 'root', 'karoly123@', {
+    const connection = new Sequelize('mydb1', 'root', '', {
       host: '127.0.0.1',
       port:  '3307',
       dialect: 'mysql',
